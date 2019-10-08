@@ -14,26 +14,32 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public New create(New entity) {
-        return null;
+        if (!entity.isNew()) {
+            entity.setId(null);  /// подумать
+        }
+        return dao.save(entity);
     }
 
     @Override
     public New update(New entity) {
-        return null;
+        return dao.save(entity); // if record for specified entity are not found that returns null
     }
 
+    //         * @return {@code true} if the entity was deleted from the table, else
+//            *         {@code false}
     @Override
     public boolean delete(int id) {
+        dao.delete(id);
         return false;
     }
 
     @Override
     public New get(int id) {
-        return null;
+        return dao.get(id); // if record for specified key are not found that returns null
     }
 
     @Override
     public List<New> getAll() {
-        return null;
+        return dao.getAll();
     }
 }

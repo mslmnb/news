@@ -8,6 +8,9 @@ public class New extends BaseEntity {
     private String brief;
     private boolean checked;
 
+    public New() {
+    }
+
     public New(LocalDate date, String title, String brief) {
         this.date = date;
         this.title = title;

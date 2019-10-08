@@ -18,6 +18,8 @@ public class BaseEntity {
         return id==null;
     }
 
+
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

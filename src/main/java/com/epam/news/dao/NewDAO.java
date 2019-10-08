@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface NewDAO {
 
-    New save(New new_);
+    New save(New nevv);
 
     void delete(int id);
 

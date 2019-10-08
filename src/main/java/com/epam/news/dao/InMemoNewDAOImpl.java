@@ -1,6 +1,7 @@
 package com.epam.news.dao;
 
 import com.epam.news.model.New;
+import com.epam.news.util.NewsUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InMemoNewDAOImpl implements NewDAO {
     private AtomicInteger idCounter = new AtomicInteger(100000);
     private Map<Integer, New> repository = new ConcurrentHashMap<>();
+
+    {
+        NewsUtil.NEWS.forEach(this::save);
+    }
 
     @Override
     public New save(New nevv) {
