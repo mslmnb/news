@@ -1,25 +1,25 @@
-package com.epam.news.service;
+package com.epam.news.dao;
 
-import com.epam.news.model.New;
+import com.epam.news.model.News;
 
 import java.util.List;
 
-public interface NewService {
+public interface NewsDAO {
 
     /**
      * Creates record into table for the specified entity
-     * @param entity the entity
+     * @param nevv the entity
      * @return the entity with initialized key
      */
-    New create(New entity);
+    News create(News nevv);
 
     /**
      * Updates record into table for the specified entity
-     * @param entity the entity
+     * @param nevv the entity
      * @return the entity
      *   if record for specified entity are not found that returns null
      */
-    New update(New entity);
+    News update(News nevv);
 
     /**
      * Deletes the entity from the table by specified key
@@ -35,12 +35,13 @@ public interface NewService {
      * @return the entity
      *   if record for specified key are not found that returns null
      */
-    New get(int id);
+    News get(int id);
 
     /**
      * Gets all entities
      * @return the list of entities
      *    if records are not found that returns empty list
      */
-    List<New> getAll();
+    List<News> getAll();
+
 }

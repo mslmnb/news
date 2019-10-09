@@ -3,7 +3,7 @@
 
   <servlet>
     <servlet-name>newServlet</servlet-name>
-    <servlet-class>com.epam.news.servlet.NewServlet</servlet-class>
+    <servlet-class>com.epam.news.servlet.NewsServlet</servlet-class>
     <load-on-startup>0</load-on-startup>
   </servlet>
   <servlet-mapping>

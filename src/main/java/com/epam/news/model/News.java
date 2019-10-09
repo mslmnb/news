@@ -2,16 +2,16 @@ package com.epam.news.model;
 
 import java.time.LocalDate;
 
-public class New extends BaseEntity {
+public class News extends BaseEntity {
     private LocalDate date;
     private String title;
     private String brief;
     private boolean checked;
 
-    public New() {
+    public News() {
     }
 
-    public New(LocalDate date, String title, String brief) {
+    public News(LocalDate date, String title, String brief) {
         this.date = date;
         this.title = title;
         this.brief = brief;
