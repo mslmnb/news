@@ -34,5 +34,5 @@ public interface NewsService {
      * @return the list of entities
      *    if records are not found that returns empty list
      */
-    List<News> getAll();
+    String getAllInJSONFormat();
 }

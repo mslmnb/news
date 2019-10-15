@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <title>News Management</title>
+    <link rel="stylesheet" href="resources/css/style.css">
+</head>
+<body>
+
+</body>
+
+<div id="react-app"></div>
+
+
+<script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js"></script>
+<script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
+
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://localhost:8083/news/app/list";
+
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this.responseText);
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    function myFunction(response) {
+        var news = JSON.parse(response);
+        /*
+         * Components
+         */
+        var NewsMenu = React.createClass({
+            render: function () {
+                return (
+                    React.createElement('div', {className: "box-table width20 box-col"},
+                        React.createElement('div', {className: "box-row"},
+                            React.createElement('div', {className: "box_menu width100"}, "News List")
+                        ),
+                        React.createElement('div', {className: "box-row"},
+                            React.createElement('div', {className: "box_menu width100"}, "Add News")
+                        )
+                    )
+                )
+            }
+        })
+
+        var NewsItem = React.createClass({
+            propTypes: {
+                date: React.PropTypes.string.isRequired,
+                title: React.PropTypes.string.isRequired,
+                brief: React.PropTypes.string.isRequired,
+                checked: React.PropTypes.bool.isRequired
+            },
+            render: function () {
+                return (
+                    React.createElement('div', {},
+                        React.createElement('div', {className: "box-row"},
+                            React.createElement('div', {className: "box width80"}, this.props.title),
+                            React.createElement('div', {className: "box width20"}, this.props.date)
+                        ),
+                        React.createElement('div', {className: "box-row"},
+                            React.createElement('div', {className: "box width100"}, this.props.brief)
+                        ),
+                        React.createElement('div', {className: "box-row"},
+                            React.createElement('div', {className: "box width80"}, ""),
+                            React.createElement('div', {className: "box width20"}, "view edit check")
+                        ),
+                        React.createElement('div', {className: "box-row"},
+                            React.createElement('div', {className: "box width100"}, "")
+                        )
+                    )
+                )
+            }
+        })
+
+        var NewsView = React.createClass({
+            propTypes: {
+                news: React.PropTypes.array.isRequired
+            },
+            render: function () {
+                var newsItemElements = news
+                    .map(function (n) {
+                        return React.createElement(NewsItem, n)
+                    })
+                return (
+                    React.createElement('div', {},
+                        React.createElement('h2', {}, "News Management"),
+                        React.createElement('div', {className: "box-table"},
+                            React.createElement(NewsMenu),
+                            React.createElement('div', {className: "box-table width80 box-col"}, newsItemElements)
+                        )
+                    )
+                )
+            }
+        })
+        /*
+         * Entry point
+         */
+        ReactDOM.render(
+            React.createElement(NewsView, {
+                news: news   // Json data
+            }),
+            document.getElementById('react-app')
+        )
+    }
+</script>
+</html>

@@ -4,6 +4,7 @@ import com.epam.news.dao.NewsDAO;
 import com.epam.news.model.News;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.epam.news.util.ValidationUtil.checkNotFound;
 
@@ -34,7 +35,15 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<News> getAll() {
-        return dao.getAll();
+    public String getAllInJSONFormat() {
+        return getJsonString(dao.getAll());
     }
+
+
+    private static String getJsonString(List<News> news) {
+        return "[ "
+                + news.stream().map(n -> n.getJsonString()).collect(Collectors.joining(", "))
+                + "]";
+    }
+
 }

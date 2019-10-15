@@ -2,13 +2,13 @@
   <display-name>News</display-name>
 
   <servlet>
-    <servlet-name>newServlet</servlet-name>
+    <servlet-name>newsServlet</servlet-name>
     <servlet-class>com.epam.news.servlet.NewsServlet</servlet-class>
     <load-on-startup>0</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>newServlet</servlet-name>
-    <url-pattern>/list</url-pattern>
+    <servlet-name>newsServlet</servlet-name>
+    <url-pattern>/app/*</url-pattern>
   </servlet-mapping>
 
 </web-app>

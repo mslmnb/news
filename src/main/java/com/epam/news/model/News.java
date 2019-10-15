@@ -1,8 +1,16 @@
 package com.epam.news.model;
 
+import org.json.JSONObject;
+
 import java.time.LocalDate;
 
 public class News extends BaseEntity {
+    private static final String ID_KEY = "key";
+    private static final String DATE_KEY = "date";
+    private static final String TITLE_KEY = "title";
+    private static final String BRIEF_KEY = "brief";
+    private static final String CHECKED_KEY = "checked";
+
     private LocalDate date;
     private String title;
     private String brief;
@@ -32,5 +40,15 @@ public class News extends BaseEntity {
 
     public boolean isChecked() {
         return checked;
+    }
+
+    public String getJsonString() {
+        JSONObject newsJSONobj = new JSONObject();
+        newsJSONobj.put(ID_KEY, this.getId());
+        newsJSONobj.put(DATE_KEY, this.getDate());
+        newsJSONobj.put(TITLE_KEY, this.getTitle());
+        newsJSONobj.put(BRIEF_KEY, this.getBrief());
+        newsJSONobj.put(CHECKED_KEY, this.isChecked());
+        return newsJSONobj.toString();
     }
 }
