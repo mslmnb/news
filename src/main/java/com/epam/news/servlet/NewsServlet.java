@@ -1,11 +1,8 @@
 package com.epam.news.servlet;
 
-import com.epam.news.dao.InMemoNewsDAOImpl;
 import com.epam.news.service.NewsService;
-import com.epam.news.service.NewsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -24,7 +21,8 @@ public class NewsServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        ApplicationContext springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml");
+        WebApplicationContext springContext = WebApplicationContextUtils
+                .getRequiredWebApplicationContext(getServletContext());
         service = springContext.getBean(NewsService.class);
     }
 
