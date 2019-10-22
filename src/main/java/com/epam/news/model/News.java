@@ -3,6 +3,7 @@ package com.epam.news.model;
 import org.json.JSONObject;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class News extends BaseEntity {
     private static final String ID_KEY = "key";
@@ -26,6 +27,18 @@ public class News extends BaseEntity {
         this.checked = false;
     }
 
+    public News(Integer id, LocalDate date, String title, String brief, String checked) {
+        setId(id);
+        this.date = date;
+        this.title = title;
+        this.brief = brief;
+        if (checked.equalsIgnoreCase("T")) {
+            this.checked = true;
+        } else {
+            this.checked = false;
+        }
+    }
+
     public LocalDate getDate() {
         return date;
     }
@@ -40,6 +53,10 @@ public class News extends BaseEntity {
 
     public boolean isChecked() {
         return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
     public String getJsonString() {

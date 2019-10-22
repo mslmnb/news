@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Repository
+//@Repository
 public class InMemoNewsDAOImpl implements NewsDAO {
     private AtomicInteger idCounter = new AtomicInteger(100000);
     private Map<Integer, News> repository = new ConcurrentHashMap<>();
