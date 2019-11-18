@@ -2,9 +2,13 @@ package com.epam.news.model;
 
 import org.json.JSONObject;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "news")
 public class News extends BaseEntity {
     private static final String ID_KEY = "key";
     private static final String DATE_KEY = "date";
@@ -12,9 +16,13 @@ public class News extends BaseEntity {
     private static final String BRIEF_KEY = "brief";
     private static final String CHECKED_KEY = "checked";
 
+    @Column(name = "DATETIME", nullable = false, columnDefinition = "default SYSDATE")
     private LocalDate date;
+    @Column(name = "TITLE", nullable = false)
     private String title;
+    @Column(name = "BRIEF", nullable = false)
     private String brief;
+    @Column(name = "CHECKED")
     private boolean checked;
 
     public News() {

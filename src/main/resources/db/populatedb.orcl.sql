@@ -1,19 +1,19 @@
 DELETE FROM news;
 -- ALTER SEQUENCE global_seq START WITH 100000;
 
-INSERT INTO news ("date", title, brief)
+INSERT INTO news (datetime, title, brief)
 VALUES (systimestamp - 10, 'Заголовок новости1',
         'Новость1 новость1 новость1 новость1 новость1 новость1 новость1 новость1 новость1 новость1 новость1 новость1 новость1 новость1');
 
-INSERT INTO news ("date", title, brief)
+INSERT INTO news (datetime, title, brief)
 VALUES (systimestamp - 7, 'Заголовок новости2',
         'Новость2 новость2 новость2 новость2 новость2 новость2 новость2 новость2 новость2 новость2 новость2 новость2 новость2 новость2');
 
-INSERT INTO news ("date", title, brief)
+INSERT INTO news (datetime, title, brief)
 VALUES (systimestamp - 3, 'Заголовок новости3',
         'Новость3 новость3 новость3 новость3 новость3 новость3 новость3 новость3 новость3 новость3 новость3 новость3 новость3 новость3');
 
-INSERT INTO news ("date", title, brief)
+INSERT INTO news (datetime, title, brief)
 VALUES (systimestamp - 1, 'Заголовок новости4',
         'Новость4 новость4 новость4 новость4 новость4 новость4 новость4 новость4 новость4 новость4 новость4 новость4 новость4 новость4');
 
