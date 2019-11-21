@@ -36,13 +36,13 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public News getById(@Nonnull int id) {
-        return checkNotFound(dao.get(id));
+    public String getById(@Nonnull int id) {
+        return checkNotFound(dao.get(id).getJsonString());
     }
 
     @Nonnull
     @Override
-    public String getAllInJSONFormat() {
+    public String getAll() {
         return getJsonString(dao.getAll());
     }
 

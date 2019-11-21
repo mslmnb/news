@@ -28,7 +28,7 @@ public interface NewsService {
      * @return the entity
      * @throws NotFoundAppException if record is not found
      */
-    News getById(@Nonnull int id) throws NotFoundAppException;
+    String getById(@Nonnull int id) throws NotFoundAppException;
 
     /**
      * Gets all entities
@@ -36,5 +36,5 @@ public interface NewsService {
      *    if records are not found that returns empty list
      */
     @Nonnull
-    String getAllInJSONFormat();
+    String getAll();
 }

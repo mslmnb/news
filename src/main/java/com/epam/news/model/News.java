@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "news")
 public class News extends BaseEntity {
-    private static final String ID_KEY = "key";
+    private static final String ID_KEY = "id";
     private static final String DATE_KEY = "date";
     private static final String TITLE_KEY = "title";
     private static final String BRIEF_KEY = "brief";

@@ -1,7 +1,10 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
     <title>News Management</title>
-    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
 
@@ -15,7 +18,7 @@
 
 <script>
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://localhost:8083/news/app/list";
+    var url = "http://localhost:8083/news/list/${param.id}";
 
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -33,12 +36,14 @@
         var NewsMenu = React.createClass({
             render: function () {
                 return (
-                    React.createElement('div', {className: "box-table width20 box-col"},
-                        React.createElement('div', {className: "box-row"},
-                            React.createElement('div', {className: "box_menu width100"}, "News List")
-                        ),
-                        React.createElement('div', {className: "box-row"},
-                            React.createElement('div', {className: "box_menu width100"}, "Add News")
+                    React.createElement('div', {className: "width20 box-col"},
+                        React.createElement('ul', {className: "box"},
+                            React.createElement('li', {},
+                                React.createElement('a', {href: "#"}, "News List")
+                            ),
+                            React.createElement('li', {},
+                                React.createElement('a', {href: "#"}, "Add News")
+                            )
                         )
                     )
                 )
@@ -47,27 +52,31 @@
 
         var NewsItem = React.createClass({
             propTypes: {
+                id: React.PropTypes.number.isRequired,
                 date: React.PropTypes.string.isRequired,
                 title: React.PropTypes.string.isRequired,
-                brief: React.PropTypes.string.isRequired,
-                checked: React.PropTypes.bool.isRequired
+                brief: React.PropTypes.string.isRequired
             },
             render: function () {
                 return (
                     React.createElement('div', {},
                         React.createElement('div', {className: "box-row"},
-                            React.createElement('div', {className: "box width80"}, this.props.title),
-                            React.createElement('div', {className: "box width20"}, this.props.date)
+                            React.createElement('div', {className: "box width20"}, "News Title"),
+                            React.createElement('div', {className: "box width80"}, this.props.title)
                         ),
                         React.createElement('div', {className: "box-row"},
-                            React.createElement('div', {className: "box width100"}, this.props.brief)
+                            React.createElement('div', {className: "box width20"}, "News Date"),
+                            React.createElement('div', {className: "box width80"}, this.props.date)
                         ),
                         React.createElement('div', {className: "box-row"},
-                            React.createElement('div', {className: "box width80"}, ""),
-                            React.createElement('div', {className: "box width20"}, "view edit check")
+                            React.createElement('div', {className: "box width20"}, "Brief"),
+                            React.createElement('div', {className: "box width80"}, this.props.brief)
                         ),
                         React.createElement('div', {className: "box-row"},
-                            React.createElement('div', {className: "box width100"}, "")
+                            React.createElement('div', {className: "width100 button_panel"},
+                                React.createElement('a', {className: "button", href: "#"}, "EDIT"),
+                                React.createElement('a', {className: "button", href: "#"}, "DELETE")
+                            )
                         )
                     )
                 )
@@ -79,16 +88,14 @@
                 news: React.PropTypes.array.isRequired
             },
             render: function () {
-                var newsItemElements = news
-                    .map(function (n) {
-                        return React.createElement(NewsItem, n)
-                    })
+                var newsItemElement = React.createElement(NewsItem, news)
+
                 return (
                     React.createElement('div', {},
                         React.createElement('h2', {}, "News Management"),
                         React.createElement('div', {className: "box-table"},
                             React.createElement(NewsMenu),
-                            React.createElement('div', {className: "box-table width80 box-col"}, newsItemElements)
+                            React.createElement('div', {className: "width80 box-col"}, newsItemElement)
                         )
                     )
                 )

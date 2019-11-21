@@ -1,9 +1,7 @@
 .box-table {
     display: table;
     width: 100%;
-    outline: 1px solid #c00;
     overflow: hidden;
-    /*width: 800px;*/
 }
 
 .box-row {
@@ -11,22 +9,14 @@
 }
 
 .box-col {
-    display: table-cell
+    display: table-cell;
+    vertical-align: top;
 }
 
 .box {
     display: inline-block;
     float: left;
     text-align: left;
-    vertical-align: top;
-    padding: 0;
-    height: 2em;
-}
-
-.box_menu {
-    display: inline-block;
-    text-align: left;
-    vertical-align: top;
     padding: 0;
     height: 2em;
 }
@@ -43,6 +33,39 @@
     width: 100%;
 }
 
+a {
+    /*padding-right: 5px;*/
+    margin-right: 5px;
+}
 
+li {
+    padding: 5px;
+}
 
+input {
+    padding: 0px;
+    margin:  2px;
+    vertical-align: bottom;
+}
+
+.button_panel {
+    text-align: center;
+    display: inline-block;
+    float: left;
+    padding: 0;
+    margin: 15px;
+}
+
+.button {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    vertical-align: bottom;
+    padding: 4px 6px 4px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
 
